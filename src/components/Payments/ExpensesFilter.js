@@ -3,23 +3,19 @@ import React from 'react';
 import './ExpensesFilter.css';
 
 const ExpensesFilter = (props) => {
-  const dropdownChangeHandler = (event) => {
-    props.onChangeFilter(event.target.value);
-  };
+    const rangeChangeHandler = (event) => {
+        props.onChangeFilter(event.target.value);
+    };
 
-  return (
-    <div className='expenses-filter'>
-      <div className='expenses-filter__control'>
-        <label>Filter by year</label>
-        <select value={props.selected} onChange={dropdownChangeHandler}>
-          <option value='2023'>2023</option>
-          <option value='2022'>2022</option>
-          <option value='2021'>2021</option>
-          <option value='2020'>2020</option>
-        </select>
-      </div>
-    </div>
-  );
+    return (
+        <div className="expenses-filter">
+            <div className="expenses-filter__control">
+                <label>Filter by year</label>
+                <input type="range" min="0" max="1000" step="1" value={props.selected} onChange={rangeChangeHandler}></input>
+            </div>
+            <div style={{ textAlign: 'center', marginTop: '0.5rem' }}> {props.selected}원 이상</div>
+        </div>
+    );
 };
 
 export default ExpensesFilter;
